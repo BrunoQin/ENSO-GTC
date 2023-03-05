@@ -6,6 +6,7 @@ __pycache__/
 checkpoints_archive/
 libs/
 file/
+pattern.py
 
 # C extensions
 *.so

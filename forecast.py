@@ -32,7 +32,7 @@ def colloct_result(result):
 if __name__=='__main__':
 
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
-    forecast_loader = DataLoader(dataset=load_forecast_data(), batch_size=1, shuffle=True)
+    forecast_loader = DataLoader(dataset=load_forecast_data(), batch_size=1, shuffle=False)
     length, scaler = get_length_and_scaler(filename=args['nc_file'])
     climatology = get_climatology(filename=args['nc_file'])
 
@@ -76,7 +76,7 @@ if __name__=='__main__':
 
         month = (length + step) % 12
         pattern = output - climatology[month]
-        nino34 = np.mean(output[84:96, 9:61])
+        nino34 = np.mean(pattern[84:96, 9:61])
         pattern_result.append(pattern)
         nino_result.append(nino34)
 
